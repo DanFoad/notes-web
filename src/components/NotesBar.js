@@ -41,7 +41,7 @@ export default class NotesBar extends Component {
     }
 
     setSelectedNote(id) {
-        //AppActions.setSelectedNote(id)
+        this.props.actions.setSelectedNote(id)
     }
 
     getNoteSummaries() {

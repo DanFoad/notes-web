@@ -49,7 +49,7 @@ export default class SideBar extends Component {
 
     setSelectedTag(id) {
         // Set selected tag
-        //AppActions.setSelectedTag(id);
+        this.props.actions.setSelectedTag(id);
     }
 
     getCounts() {

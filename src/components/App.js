@@ -13,31 +13,35 @@ export default class App extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { ...initialState }
+        var actions = {
+            setSelectedTag: this.setSelectedTag.bind(this),
+            setSelectedNote: this.setSelectedNote.bind(this),
+        }
+
+        this.state = { ...initialState, actions }
+    }
+
+    setSelectedTag(id) {
+        this.setState({
+            ...this.state,
+            selectedTag: id,
+        })
+    }
+
+    setSelectedNote(id) {
+        this.setState({
+            ...this.state,
+            selectedNote: id,
+        })
     }
 
     getCurrentView() {
         return (
             <div className='main'>
                 <div className='content'>
-                    <Sidebar
-                        selectedTag = { this.state.selectedTag }
-                        tags = { this.state.tags }
-                        notes = { this.state.notes }
-                    />
-                    <NotesBar
-                        selectedTag = { this.state.selectedTag }
-                        selectedNote = { this.state.selectedNote }
-                        tags = { this.state.tags }
-                        notes = { this.state.notes }
-                    />
-                    <Notes
-                        selectedNote = { this.state.selectedNote }
-                        notes = { this.state.notes }
-                        tags = { this.state.tags }
-                        editorState = { this.state.editorState }
-                        selectionState = { this.state.selectionState }
-                    />
+                    <Sidebar { ...this.state } />
+                    <NotesBar { ...this.state } />
+                    <Notes { ...this.state } />
                 </div>
             </div>
         )
