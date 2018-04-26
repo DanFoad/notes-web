@@ -10,6 +10,7 @@ export default class NoteEditor extends Component {
             editorState: props.editorState,
             selectionState: props.selectionState,
             id: props.id,
+            updateNoteEditor: props.updateHandler,
         };
         this.onChange = this.onChange.bind(this)
         this.onBlur = this.onBlur.bind(this)
@@ -20,7 +21,7 @@ export default class NoteEditor extends Component {
     }
 
     onChange(editorState) {
-        //AppActions.updateNoteEditor(this.state.id, editorState.getCurrentContent().getPlainText(), editorState, editorState.getSelection())
+        this.state.updateNoteEditor(editorState.getCurrentContent().getPlainText(), editorState, editorState.getSelection())
     }
 
     componentWillReceiveProps(nextProps) {

@@ -78,7 +78,7 @@ export default class Notes extends Component {
                     options={this.getOptions()}
                 />}
                 <NotesMenu />
-                <NoteEditor id={this.state.selectedNote} initialValue={this.state.noteText} editorState={this.state.editorState} selectionState={this.state.selectionState} />
+                <NoteEditor id={this.state.selectedNote} initialValue={this.state.noteText} editorState={this.state.editorState} selectionState={this.state.selectionState} updateHandler={this.props.actions.updateNoteEditor} />
             </div>
         )
     }

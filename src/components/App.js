@@ -21,6 +21,8 @@ export default class App extends Component {
             createNewTag: this.createNewTag.bind(this),
             updateNoteTitle: this.updateNoteTitle.bind(this),
             updateNoteTag: this.updateNoteTag.bind(this),
+            setNoteText: this.setNoteText.bind(this),
+            updateNoteEditor: this.updateNoteEditor.bind(this),
         }
 
         this.state = { ...initialState, actions }
@@ -112,6 +114,21 @@ export default class App extends Component {
         this.setState({
             ...this.state,
             notes
+        })
+    }
+    
+    setNoteText(text) {
+
+    }
+
+    updateNoteEditor(text, editorState, selectionState) {
+        var notes = [ ...this.state.notes ]
+        if (this.state.selectedNote !== -1) notes[this.state.selectedNote].text = text
+        this.setState({
+            ...this.state,
+            notes,
+            editorState,
+            selectionState,
         })
     }
 
