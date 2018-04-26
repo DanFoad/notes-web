@@ -88,7 +88,7 @@ export default class NotesBar extends Component {
             date: date,
             text: ''
         }
-        //AppActions.createNewNote(note)
+        this.props.actions.createNewNote(note)
     }
 
     getSelectedTagName() {

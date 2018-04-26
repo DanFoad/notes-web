@@ -18,8 +18,10 @@ export default class SideBar extends Component {
             editingText: '',
         };
 
+        this.newTag = this.newTag.bind(this)
         this.getTags = this.getTags.bind(this);
         this.setSelectedTag = this.setSelectedTag.bind(this);
+        this.deleteTag = this.deleteTag.bind(this);
         this.startRenameTag = this.startRenameTag.bind(this);
         this.toggleColourMode = this.toggleColourMode.bind(this);
     }
@@ -47,8 +49,13 @@ export default class SideBar extends Component {
         }
     }
 
+    deleteTag() {
+        // Deletes selected tag
+        this.props.actions.deleteTag();
+    }
+
     setSelectedTag(id) {
-        // Set selected tag
+        // Selects tag with id
         this.props.actions.setSelectedTag(id);
     }
 
@@ -81,7 +88,7 @@ export default class SideBar extends Component {
             let renameHandler = this.startRenameTag.bind(tags[i].id)
             let editHandler = this.continueRenameTag.bind(this, tags[i].id)
             let completeHandler = this.finishRenameTag.bind(this, tags[i].id)
-            let deleteHandler = this.deleteTag.bind(this, tags[i].id)
+            let deleteHandler = this.deleteTag.bind(this)
 
             if (this.state.editingTag == tags[i].id) {
                 tagsHTML.push(
@@ -121,7 +128,7 @@ export default class SideBar extends Component {
     }
 
     newTag() {
-        //AppActions.createNewTag('none')
+        this.props.actions.createNewTag('none')
     }
 
     startRenameTag(id) {
@@ -139,10 +146,6 @@ export default class SideBar extends Component {
 
     finishRenameTag(id, event) {
         
-    }
-
-    deleteTag(id) {
-        //AppActions.deleteTag(id)
     }
 
     // Toggle between light and dark mode states
