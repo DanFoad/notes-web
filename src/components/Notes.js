@@ -52,11 +52,11 @@ export default class Notes extends Component {
     }
 
     handleTitleChange(event) {
-        //AppActions.updateNoteTitle(this.state.selectedNote, event.target.value)
+        this.props.actions.updateNoteTitle(event.target.value)
     }
 
     handleSelectChange(selectedOption) {
-        //AppActions.updateNoteTag(this.state.selectedNote, selectedOption.value)
+        this.props.actions.updateNoteTag(selectedOption.value)
     }
 
     getOptions() {

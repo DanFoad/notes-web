@@ -19,6 +19,8 @@ export default class App extends Component {
             createNewNote: this.createNewNote.bind(this),
             deleteTag: this.deleteTag.bind(this),
             createNewTag: this.createNewTag.bind(this),
+            updateNoteTitle: this.updateNoteTitle.bind(this),
+            updateNoteTag: this.updateNoteTag.bind(this),
         }
 
         this.state = { ...initialState, actions }
@@ -84,6 +86,32 @@ export default class App extends Component {
         this.setState({
             ...this.state,
             tags: [ ...this.state.tags, { id, name } ]
+        })
+    }
+
+    /**
+     * Update currently selected note title to given value
+     * @param {String} title New title to set for currently selected note
+     */
+    updateNoteTitle(title) {
+        var notes = [ ...this.state.notes ]
+        notes[this.state.selectedNote].name = title
+        this.setState({
+            ...this.state,
+            notes
+        })
+    }
+
+    /**
+     * Set currently selected note to new tag value
+     * @param {Number} tag New tag option to set currently selected note to
+     */
+    updateNoteTag(tag) {
+        var notes = [ ...this.state.notes ]
+        notes[this.state.selectedNote].tag = tag
+        this.setState({
+            ...this.state,
+            notes
         })
     }
 
