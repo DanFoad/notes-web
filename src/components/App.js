@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 
 import Sidebar from './Sidebar'
+import NotesBar from './NotesBar'
+import Notes from './Notes'
 
 import initialState from '../initial-state.js'
 
@@ -22,6 +24,19 @@ export default class App extends Component {
                         selectedTag = { this.state.selectedTag }
                         tags = { this.state.tags }
                         notes = { this.state.notes }
+                    />
+                    <NotesBar
+                        selectedTag = { this.state.selectedTag }
+                        selectedNote = { this.state.selectedNote }
+                        tags = { this.state.tags }
+                        notes = { this.state.notes }
+                    />
+                    <Notes
+                        selectedNote = { this.state.selectedNote }
+                        notes = { this.state.notes }
+                        tags = { this.state.tags }
+                        editorState = { this.state.editorState }
+                        selectionState = { this.state.selectionState }
                     />
                 </div>
             </div>

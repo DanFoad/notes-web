@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-//import AppActions from '../actions/AppActions.js'
-
 export default class SideBar extends Component {
 
     constructor(props) {
@@ -19,8 +17,6 @@ export default class SideBar extends Component {
             editingTag: -1,
             editingText: '',
         };
-
-        console.log(this.state)
 
         this.getTags = this.getTags.bind(this);
         this.setSelectedTag = this.setSelectedTag.bind(this);
